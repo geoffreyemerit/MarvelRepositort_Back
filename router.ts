@@ -7,11 +7,11 @@ import { Express } from 'express';
 const setupRoutes = (server: Express) => {
   // ------ HERO ------ //
   //--ALL--
-  server.get('/api/hero', heroesController.getAllHeroes);
+  server.get('/api/heroes', heroesController.getAllHeroes);
   //--ID--
-  server.get('/api/hero/:idHero', heroesController.getHeroById);
+  server.get('/api/heroes/:idHero', heroesController.getHeroById);
   //--TEAM--
-  server.get('/api/team/:idTeam/hero', heroesController.getHeroByTeam);
+  server.get('/api/teams/:idTeam/heroes', heroesController.getHeroByTeam);
 
   // //------ HERO_POWER -----//
   // //--ALL--
@@ -24,13 +24,13 @@ const setupRoutes = (server: Express) => {
 
   //------ POWER -----//
   //--ALL--
-  server.get('/api/power', powersController.getAllPowers);
+  server.get('/api/powers', powersController.getAllPowers);
   //--ID--
-  server.get('/api/power/:idPower', powersController.getPowerById);
+  server.get('/api/powers/:idPower', powersController.getPowerById);
   //------ TEAM -----//
   //--ALL--
-  server.get('/api/team', teamsController.getAllTeams);
+  server.get('/api/teams', teamsController.getAllTeams);
   //--ID--
-  server.get('/api/team/:idTeam', teamsController.getTeamById);
+  server.get('/api/teams/:idTeam', teamsController.getTeamById);
 };
 export default setupRoutes;
