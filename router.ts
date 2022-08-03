@@ -1,103 +1,36 @@
-import usersController from './controllers/users';
-import addressesController from './controllers/addresses';
-// on importe le controller movie
-import moviesController from './controllers/movies';
-import authController from './controllers/auth';
+import heroesController from './controllers/heroes';
+import powersController from './controllers/powers';
+import teamsController from './controllers/teams';
+// import hero_powerController from './controllers/hero_power';
 import { Express } from 'express';
 
 const setupRoutes = (server: Express) => {
-  // USERS
-  // get users
-  server.get('/api/users', usersController.getAllUsers);
-  // post users, checking if email is free then adding user
-  server.post(
-    '/api/users',
-    // valide les données fournies dans la requete
-    usersController.validateUser,
-    // je vérifie que l'email est disponible
-    // aucun utilisateur n'est déjà enregistré
-    usersController.emailIsFree,
-    usersController.addUser
-  );
-  // put users, checking if user exists and updates it
-  server.put(
-    '/api/users/:idUser',
-    authController.getCurrentSession,
-    authController.checkSessionPrivileges,
-    usersController.validateUser,
-    usersController.userExists,
-    usersController.updateUser
-  );
-  // delete user by id
-  server.delete(
-    '/api/users/:idUser',
-    authController.getCurrentSession,
-    authController.checkSessionPrivileges,
-    usersController.userExists,
-    usersController.deleteUser
-  );
+  // ------ HERO ------ //
+  //--ALL--
+  server.get('/api/hero', heroesController.getAllHeroes);
+  //--ID--
+  server.get('/api/hero/:idHero', heroesController.getHeroById);
+  //--TEAM--
+  server.get('/api/team/:idTeam/hero', heroesController.getHeroByTeam);
 
-  // LOGIN
-  server.post('/api/login', authController.validateLogin, authController.login);
+  // //------ HERO_POWER -----//
+  // //--ALL--
+  // server.get('/api/hero_power', limitYearsController.getAllLimitYears);
+  // //--ID--
+  // server.get(
+  //   '/api/hero_power/:idHero_Power',
+  //   hero_PowerController.getHero_PowerById
+  // );
 
-  // ADDRESSES
-  // get addresses
-  server.get('/api/addresses', addressesController.getAllAddresses);
-  // get address by id
-  server.get('/api/addresses/:idAddress', addressesController.getAddressById);
-
-  // get addresses by user
-  server.get(
-    '/api/users/:idUser/addresses',
-    usersController.userExists,
-    authController.getCurrentSession,
-    usersController.getAddressesByUser
-  );
-  // delete addresses by user
-  server.delete(
-    '/api/users/:idUser/addresses',
-    authController.getCurrentSession,
-    authController.checkSessionPrivileges,
-    usersController.userExists,
-    usersController.deleteAddressesByUser
-  );
-  // delete address by id
-  server.delete(
-    '/api/addresses/:idAddress',
-    authController.getCurrentSession,
-    authController.checkSessionPrivileges,
-    addressesController.addressExists,
-    addressesController.deleteAddress
-  );
-  // add an address
-  server.post(
-    '/api/addresses/',
-    authController.getCurrentSession,
-    authController.checkSessionPrivileges,
-    addressesController.validateAddress,
-    addressesController.addAddress
-  );
-  // put address, checks if an address exists and updates it
-  server.put(
-    '/api/addresses/:idAddress',
-    authController.getCurrentSession,
-    authController.checkSessionPrivileges,
-    addressesController.addressExists,
-    addressesController.validateAddress,
-    addressesController.updateAddress
-  );
-
-  // MOVIES
-  // post movies
-  server.post(
-    '/api/movies',
-    // valide le film
-    moviesController.validateMovie,
-    // vérifie si le titre est disponible
-    moviesController.movieTitleIsFree,
-    // ajoute le film à la base de données
-    moviesController.addMovie
-  );
+  //------ POWER -----//
+  //--ALL--
+  server.get('/api/power', powersController.getAllPowers);
+  //--ID--
+  server.get('/api/power/:idPower', powersController.getPowerById);
+  //------ TEAM -----//
+  //--ALL--
+  server.get('/api/team', teamsController.getAllTeams);
+  //--ID--
+  server.get('/api/team/:idTeam', teamsController.getTeamById);
 };
-
 export default setupRoutes;
