@@ -1,6 +1,7 @@
 # MarvelRepository_Back
 
-Creation of a website about Marvel and its characters. Full-stack
+Creation of a website about Marvel and its characters. Full-stack.
+
 You will find the front-end part in the repo "MarvelRepository_Front"
 
 Project created for a technical test performed in 2 days.
