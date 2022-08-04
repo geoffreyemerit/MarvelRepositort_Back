@@ -11,16 +11,12 @@ const setupRoutes = (server: Express) => {
   //--ID--
   server.get('/api/heroes/:idHero', heroesController.getHeroById);
   //--TEAM--
-  server.get('/api/teams/:idTeam/heroes', heroesController.getHeroByTeam);
-
-  // //------ HERO_POWER -----//
-  // //--ALL--
-  // server.get('/api/hero_power', limitYearsController.getAllLimitYears);
-  // //--ID--
-  // server.get(
-  //   '/api/hero_power/:idHero_Power',
-  //   hero_PowerController.getHero_PowerById
-  // );
+  server.get('/api/teams/:idTeam/heroes', heroesController.getHeroesByTeam);
+  //--POWER // HERO--
+  server.get(
+    '/api/heroes/:idHero/powers',
+    heroesController.getHeroAndPowerByHeroPowers
+  );
 
   //------ POWER -----//
   //--ALL--

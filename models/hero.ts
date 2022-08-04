@@ -18,15 +18,29 @@ const getHeroById = async (idHero: number): Promise<IHero> => {
 };
 
 // GET BY TEAM
-const getHeroByTeam = async (team: number): Promise<IHero[]> => {
+const getHeroesByTeam = async (team: number): Promise<IHero[]> => {
   const results = await connection
     .promise()
     .query<IHero[]>('SELECT * FROM heroes WHERE team = ?', [team]);
   return results[0];
 };
 
+// GET BY HERO / POWER
+const getHeroAndPowerByHeroPowers = async (
+  idHero: number
+): Promise<IHero[]> => {
+  const results = await connection
+    .promise()
+    .query<IHero[]>(
+      'SELECT power FROM heroes H INNER JOIN hero_powers HP ON H.id = HP.hero_id INNER JOIN powers P ON P.id = HP.power_id WHERE H.id = ?',
+      [idHero]
+    );
+  return results[0];
+};
+
 export default {
   getAllHeroes,
   getHeroById,
-  getHeroByTeam,
+  getHeroesByTeam,
+  getHeroAndPowerByHeroPowers,
 };
