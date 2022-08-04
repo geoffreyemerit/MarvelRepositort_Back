@@ -1,8 +1,26 @@
-Voici un site sur l'univers Marvel et ses personnages.
-Il est configuré pour fonctionner avec Sass, Typescript, ESlint et Prettier.
+# MarvelRepository_Back
 
-La base de données utilisée pour ce site peut etre visible sur le script pour la recréer chez vous est dans db-reset.sql.
+Creation of a website about Marvel and its characters. Full-stack
+You will find the front-end part in the repo "MarvelRepository_Front"
 
-Le fichier .env.sample vous montre comment remplir votre fichier .env
+Project created for a technical test performed in 2 days.
 
-Bon visionnage.
+# Vite + React + Typescript + Eslint + Prettier + Sass
+
+A starter for React with Typescript with the fast Vite and all static code testing with Eslint and formatting with Prettier
+
+## Installation
+
+Clone the repo and run `npm install`
+
+## Start
+
+After the successfull installation of the packages: `npm dev & npm ts`
+
+## Database
+
+The database used for this site can be seen on the script to recreate it at home is in db-reset.sql.
+
+## .Env
+
+The .env.sample file shows you how to fill your .env file
